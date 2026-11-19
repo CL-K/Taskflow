@@ -279,23 +279,17 @@ export default function Profile() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f9fafb', padding: '3rem 1rem' }}>
+    <div className="page-shell">
       <div className="container" style={{ maxWidth: '600px' }}>
         <Link href="/dashboard" className="link" style={{ marginBottom: '1rem', display: 'block' }}>
           ← Retour au tableau de bord
         </Link>
 
-        <h1 style={{
-          fontSize: '2.25rem',
-          fontWeight: 'bold',
-          color: '#1f2937',
-          marginBottom: '0.5rem'
-        }}>
-          Mon Profil
-        </h1>
-        <p style={{ color: '#4b5563', marginBottom: '2rem' }}>
-          Modifiez vos informations personnelles
-        </p>
+        <div className="page-header">
+          <span className="eyebrow">Vos informations</span>
+          <h1>Mon profil</h1>
+          <p>Modifiez vos informations personnelles</p>
+        </div>
 
         {message && (
           <div
@@ -329,7 +323,7 @@ export default function Profile() {
                 />
                 <label className="label">
                   <span className="label-text-alt" style={{ color: '#6b7280', fontSize: '0.75rem' }}>
-                    L'email ne peut pas être modifié
+                    L&apos;email ne peut pas être modifié
                   </span>
                 </label>
               </div>

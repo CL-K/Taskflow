@@ -48,14 +48,8 @@ export default function Login() {
   const displayError = localError || authError;
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      background: 'linear-gradient(to bottom right, #eff6ff, #e0e7ff)',
-    }}>
-      <div className="card" style={{ width: '24rem' }}>
+    <div className="auth-page">
+      <div className="card auth-card">
         <div className="card-body">
           <h2 className="card-title" style={{ 
             fontSize: '1.5rem',
@@ -143,7 +137,7 @@ export default function Login() {
           }}>
             Pas encore de compte?{' '}
             <Link href="/register" style={{ color: '#4a90e2', fontWeight: 'bold', textDecoration: 'none' }}>
-              S'inscrire
+              S&apos;inscrire
             </Link>
           </p>
         </div>

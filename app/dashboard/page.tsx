@@ -81,9 +81,10 @@ export default function Dashboard() {
     : user.email?.split('@')[0];
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f9fafb', padding: '3rem 1rem' }}>
+    <div className="page-shell">
       <div className="container">
-        <div style={{ marginBottom: '2rem' }}>
+        <div className="page-header">
+          <span className="eyebrow">Votre espace de travail</span>
           <h1 style={{
             fontSize: '2.25rem',
             fontWeight: 'bold',
@@ -97,7 +98,7 @@ export default function Dashboard() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-8" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
+        <div className="grid grid-cols-2 gap-8 dashboard-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
           {/* Carte Mes Projets */}
           <div className="card" style={{ transition: 'all 0.3s ease' }}>
             <div className="card-body">

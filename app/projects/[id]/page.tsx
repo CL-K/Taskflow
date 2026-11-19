@@ -146,12 +146,13 @@ export default function TasksPage() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f9fafb', padding: '3rem 1rem' }}>
+    <div className="page-shell">
       <div className="container">
-        <div style={{ marginBottom: '2rem' }}>
+        <div className="page-header">
           <Link href="/projects" className="link" style={{ marginBottom: '1rem', display: 'block' }}>
             ← Retour aux projets
           </Link>
+          <span className="eyebrow">Espace projet</span>
           <h1 style={{
             fontSize: '2.25rem',
             fontWeight: 'bold',
@@ -238,13 +239,13 @@ export default function TasksPage() {
         )}
 
         {/* Colonnes Kanban */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+        <div className="kanban-board" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
           {(['todo', 'in_progress', 'done'] as const).map((status) => {
             const statusConfig = status === 'todo' ? { title: 'À faire', border: '#6b7280', bg: '#f3f4f6' } :
                                  status === 'in_progress' ? { title: 'En cours', border: '#fbbf24', bg: '#fef3c7' } :
                                  { title: 'Terminé', border: '#10b981', bg: '#dcfce7' };
             return (
-              <div key={status} style={{ backgroundColor: '#fff', borderRadius: '0.5rem', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)', padding: '1.5rem' }}>
+              <div key={status} className="kanban-column" style={{ backgroundColor: '#fff', borderRadius: '0.5rem', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)', padding: '1.5rem' }}>
                 <h2 style={{ fontSize: '1.125rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '1rem', paddingBottom: '1rem', borderBottom: `2px solid ${statusConfig.border}` }}>
                   {statusConfig.title} ({tasksByStatus[status].length})
                 </h2>
@@ -252,7 +253,7 @@ export default function TasksPage() {
                   {tasksByStatus[status].map((task) => {
                     const priorityColor = task.priority === 'high' ? { bg: '#fee2e2', text: '#991b1b' } : task.priority === 'medium' ? { bg: '#fef3c7', text: '#92400e' } : { bg: '#dbeafe', text: '#1e40af' };
                     return (
-                      <div key={task.id} style={{ backgroundColor: statusConfig.bg, borderRadius: '0.375rem', padding: '1rem', borderLeft: `4px solid ${statusConfig.border}` }}>
+                      <div key={task.id} className="task-card" style={{ backgroundColor: statusConfig.bg, borderRadius: '0.375rem', padding: '1rem', borderLeft: `4px solid ${statusConfig.border}` }}>
                         <h3 style={{ fontWeight: '600', color: status === 'done' ? '#9ca3af' : '#1f2937', textDecoration: status === 'done' ? 'line-through' : 'none' }}>{task.title}</h3>
                         <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem' }}>
                           <span className="badge" style={{ backgroundColor: priorityColor.bg, color: priorityColor.text }}>

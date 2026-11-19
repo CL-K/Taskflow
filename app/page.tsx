@@ -16,75 +16,52 @@ export default function Home() {
   }, [user, loading, router]);
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      background: 'linear-gradient(to bottom right, #eff6ff, #e0e7ff)',
-      padding: '1.5rem'
-    }}>
-      <div style={{
-        textAlign: 'center',
-        maxWidth: '42rem',
-        paddingLeft: '1.5rem',
-        paddingRight: '1.5rem'
-      }}>
-        <h1 style={{
-          fontSize: '3rem',
-          fontWeight: 'bold',
-          color: '#1f2937',
-          marginBottom: '1.5rem'
-        }}>
-          Bienvenue sur <span style={{ color: '#4a90e2' }}>TaskFlow</span>
-        </h1>
-        
-        <p style={{
-          fontSize: '1.125rem',
-          color: '#4b5563',
-          marginBottom: '2rem',
-          lineHeight: '1.6'
-        }}>
-          TaskFlow est votre solution complète pour gérer vos projets, organiser vos tâches 
-          et collaborer efficacement en ligne. Commencez dès maintenant et transformez votre 
-          productivité.
-        </p>
+    <div className="landing-page">
+      <div className="landing-content">
+        <section className="landing-copy">
+          <span className="eyebrow">Une organisation plus simple</span>
+          <h1>
+            Faites avancer vos projets, <span style={{ color: '#5b5ce2' }}>sans friction.</span>
+          </h1>
+          <p>
+            Rassemblez vos projets et vos tâches au même endroit. Gardez une vue claire sur les priorités
+            et avancez sereinement, une étape à la fois.
+          </p>
+          <div className="landing-actions">
+            <Link href={user ? '/dashboard' : '/register'} className="btn btn-lg btn-primary">
+              {user ? 'Ouvrir mon espace' : 'Créer mon espace'} <span aria-hidden="true">→</span>
+            </Link>
+            {!user && (
+              <Link href="/login" className="btn btn-lg btn-outline">
+                J’ai déjà un compte
+              </Link>
+            )}
+          </div>
+          <div className="landing-points">
+            <span>✓</span><span>Projets organisés</span>
+            <span>✓</span><span>Suivi des tâches</span>
+            <span>✓</span><span>Progression visible</span>
+          </div>
+        </section>
 
-        <div style={{ marginBottom: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', color: '#4b5563' }}>
-            <span style={{ fontSize: '1.875rem' }}>✓</span>
-            <span>Gestion de projets simplifiée</span>
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', color: '#4b5563' }}>
-            <span style={{ fontSize: '1.875rem' }}>✓</span>
-            <span>Suivi des tâches en temps réel</span>
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', color: '#4b5563' }}>
-            <span style={{ fontSize: '1.875rem' }}>✓</span>
-            <span>Collaboration d'équipe intégrée</span>
+        <div className="landing-preview" aria-label="Aperçu du tableau de bord TaskFlow">
+          <div className="preview-window">
+            <div className="preview-topbar">
+              <span>Vue d’ensemble</span>
+              <div className="preview-dots" aria-hidden="true"><span /><span /><span /></div>
+            </div>
+            <div className="preview-content">
+              <div className="preview-stat"><strong>08</strong><span>Projets actifs</span></div>
+              <div className="preview-stat"><strong>24</strong><span>Tâches terminées</span></div>
+              <div className="preview-task">
+                <div className="preview-task-row"><span>Cette semaine</span><span className="preview-tag">3 priorités</span></div>
+                <div className="preview-task-row"><span>Finaliser la maquette</span><span className="preview-tag">En cours</span></div>
+                <div className="preview-task-row"><span>Préparer le lancement</span><span className="preview-tag">À faire</span></div>
+                <div className="preview-task-row"><span>Revue du projet</span><span className="preview-tag">Terminé</span></div>
+              </div>
+            </div>
           </div>
         </div>
-
-        <Link 
-          href={user ? '/dashboard' : '/login'} 
-          className="btn btn-lg btn-primary"
-          style={{
-            display: 'inline-flex',
-            padding: '1rem 2rem',
-            fontSize: '1.125rem',
-            marginBottom: '2rem'
-          }}
-        >
-          {user ? 'Aller au tableau de bord →' : 'Commencer →'}
-        </Link>
-
-        <p style={{
-          color: '#6b7280',
-          marginTop: '2rem',
-          fontSize: '0.875rem'
-        }}>
-          Gratuit pendant 30 jours. Aucune carte bancaire requise.
-        </p>
       </div>
     </div>
   );

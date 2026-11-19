@@ -31,49 +31,44 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="nav-center">
-        {!user && (
-          <Link href="/" style={linkStyle(isActive('/'))}>
-            TaskFlow
-          </Link>
-        )}
+      <div className="nav-inner">
+        <Link href={user ? '/dashboard' : '/'} className="nav-brand">
+          <span className="brand-mark">TF</span>
+          <span>TaskFlow</span>
+        </Link>
         {user && (
-          <>
+          <div className="nav-center">
             <Link href="/dashboard" style={linkStyle(isActive('/dashboard'))}>
               Tableau de bord
             </Link>
             <Link href="/projects" style={linkStyle(isActive('/projects'))}>
               Projets
             </Link>
-          </>
-        )}
-      </div>
-      <div className="nav-right">
-        {user ? (
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: '#fff' }}>
-            <span style={{ fontSize: '0.875rem' }}>{displayName}</span>
-            <button 
-              onClick={handleLogout}
-              className="btn btn-sm btn-error"
-              style={{ backgroundColor: '#dc2626', borderColor: '#dc2626' }}
-            >
-              Déconnexion
-            </button>
-          </div>
-        ) : (
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
-            {pathname !== '/login' && (
-              <Link href="/login" className="btn btn-sm btn-warning">
-                Connexion
-              </Link>
-            )}
-            {pathname !== '/register' && (
-              <Link href="/register" className="btn btn-sm btn-primary">
-                S'inscrire
-              </Link>
-            )}
           </div>
         )}
+        <div className="nav-right">
+          {user ? (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: '#fff' }}>
+              <span style={{ fontSize: '0.875rem' }}>{displayName}</span>
+              <button onClick={handleLogout} className="btn btn-sm btn-error">
+                Déconnexion
+              </button>
+            </div>
+          ) : (
+            <div style={{ display: 'flex', gap: '0.5rem' }}>
+              {pathname !== '/login' && (
+                <Link href="/login" className="btn btn-sm btn-outline">
+                  Connexion
+                </Link>
+              )}
+              {pathname !== '/register' && (
+                <Link href="/register" className="btn btn-sm btn-primary">
+                  S&apos;inscrire
+                </Link>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </nav>
   );

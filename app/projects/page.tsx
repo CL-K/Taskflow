@@ -99,12 +99,13 @@ export default function Projects() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f9fafb', padding: '3rem 1rem' }}>
+    <div className="page-shell">
       <div className="container">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem' }}>
-          <h1 style={{ fontSize: '2.25rem', fontWeight: 'bold', color: '#1f2937' }}>
-            Mes Projets
-          </h1>
+        <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
+          <div>
+            <span className="eyebrow">Planifier et suivre</span>
+            <h1>Mes projets</h1>
+          </div>
           <button
             onClick={() => setShowForm(!showForm)}
             className="btn btn-lg btn-success"
@@ -181,8 +182,8 @@ export default function Projects() {
           gap: '1.5rem'
         }}>
           {projects.map((project) => (
-            <div key={project.id} className="card" style={{ transition: 'all 0.3s ease', height: '100%' }}>
-              <div style={{
+            <div key={project.id} className="card project-card" style={{ transition: 'all 0.3s ease', height: '100%' }}>
+              <div className="project-card-accent" style={{
                 height: '8rem',
                 background: 'linear-gradient(90deg, #4f46e5, #7c3aed)'
               }} />
